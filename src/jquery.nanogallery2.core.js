@@ -2102,7 +2102,7 @@
     // author: underscore.js - http://underscorejs.org/docs/underscore.html
     // Returns a function, that, when invoked, will only be triggered at most once during a given window of time.
     // Normally, the throttled function will run as much as it can, without ever going more than once per wait duration;
-    // but if you’d like to disable the execution on the leading edge, pass {leading: false}.
+    // but if youï¿½d like to disable the execution on the leading edge, pass {leading: false}.
     // To disable execution on the trailing edge, ditto.
     var throttle = function(func, wait, options) {
       var context, args, result;
@@ -3083,13 +3083,15 @@
 
       var elt = G.$E.base[0].attributes;
       var thumbsrc = '';
-      // src attribute (img element)
-      if( elt.hasOwnProperty('src') ) {
-        thumbsrc = elt['src'].nodeValue;
-      }
+
+	  // Let data-ngthumb property take precedent
       // data-ngthumb attribute
-      if( thumbsrc == '' && elt.hasOwnProperty('data-ngthumb') ) {
+      if( elt.hasOwnProperty('data-ngthumb') ) {
         thumbsrc = elt['data-ngthumb'].nodeValue;
+      }
+      // src attribute (img element)
+      if( thumbsrc == '' && elt.hasOwnProperty('src') ) {
+        thumbsrc = elt['src'].nodeValue;
       }
       
       var displayIdx = undefined;
@@ -6548,13 +6550,13 @@
 
         // THUMBNAIL IMAGE
         var thumbsrc = '';
-				// src attribute (img element)
-        if( data.hasOwnProperty('src') ) {
-          thumbsrc = data['src'];
-        }
-				// data-ngthumb attribute
-				if( thumbsrc == '' && data.hasOwnProperty('data-ngthumb') ) {
+		// data-ngthumb attribute
+		if( data.hasOwnProperty('data-ngthumb') ) {
           thumbsrc = data['data-ngthumb'];
+        }
+		// src attribute (img element)
+        if( thumbsrc == '' && data.hasOwnProperty('src') ) {
+          thumbsrc = data['src'];
         }
         if( thumbsrc == '' ) {
           thumbsrc = src;       // no thumbnail image URL -> use big image URL
@@ -7894,7 +7896,7 @@
         };
       }
 
-      // requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
+      // requestAnimationFrame polyfill by Erik Mï¿½ller. fixes from Paul Irish and Tino Zijdel
       // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
       // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
       // MIT license
@@ -8402,7 +8404,7 @@
       var vimg = new VImg(ngy2ItemIdx);
       G.VOM.items.push(vimg);
       items.push(G.I[ngy2ItemIdx]);
-      //TODO -> danger? -> pourquoi reconstruire la liste si déjà ouvert (back/forward)     
+      //TODO -> danger? -> pourquoi reconstruire la liste si dï¿½jï¿½ ouvert (back/forward)     
       var l = G.I.length;
       for( let idx = ngy2ItemIdx+1; idx < l ; idx++) {
         let item = G.I[idx];
